@@ -1,0 +1,12 @@
+When facing a problem below:
+'''
+Error in dyn.load(file, DLLpath = DLLpath, ...) :
+  unable to load shared object '<my_lib_Path>/readxl/libs/readxl.so':
+  <my_lib_path>/readxl/libs/readxl.so: undefined symbol: libiconv
+Error loading failed
+'''
+
+Try:
+'''
+withr::with_makevars(c(PKG_LIBS="-liconv"), install.packages("readxl"), assignment="+=")
+'''
